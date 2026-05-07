@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electronic Reservation Slip (ERS)</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 10mm 15mm 10mm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+        }
+        .header-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0b2f61; /* IRCTC Blue */
+            text-align: center;
+            padding: 5px;
+            border-bottom: 2px solid #0b2f61;
+        }
+        .sub-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 11px;
+            background-color: #f2f2f2;
+            padding: 4px;
+            border: 1px solid #cccccc;
+            margin-bottom: 10px;
+        }
+        /* Grid-style table for Journey Info */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .info-table td {
+            border: 1px solid #bbbbbb;
+            padding: 5px 8px;
+            vertical-align: top;
+            width: 25%;
+        }
+        .label {
+            font-size: 9px;
+            color: #666666;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .value {
+            font-size: 11px;
+            font-weight: bold;
+            color: #111111;
+        }
+        /* Passenger & Payment Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .data-table th {
+            background-color: #0b2f61;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: left;
+            padding: 5px 8px;
+            border: 1px solid #0b2f61;
+        }
+        .data-table td {
+            border: 1px solid #cccccc;
+            padding: 6px 8px;
+            font-size: 11px;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Footer / Instructions styling */
+        .footer-banner {
+            background-color: #fcf8e3;
+            border: 1px solid #fbeed5;
+            color: #c09853;
+            padding: 6px;
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        .disclaimer {
+            font-size: 8px;
+            color: #777777;
+            margin-top: 10px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+
+    <table class="header-table">
+        <tr>
+            <td style="width: 15%; text-align: left; vertical-align: middle;">
+                <span style="font-weight: bold; color: #0b2f61; font-size: 14px;">IR</span>
+            </td>
+            <td style="width: 70%; text-align: center;">
+                <div class="header-title">INDIAN RAILWAYS</div>
+            </td>
+            <td style="width: 15%; text-align: right; vertical-align: middle;">
+                <span style="font-weight: bold; color: #f25c05; font-size: 14px;">IRCTC</span>
+            </td>
+        </tr>
+    </table>
+
+    <div class="sub-header">Electronic Reservation Slip (ERS) - Normal User</div>
+
+    <table class="info-table">
+        <tr>
+            <td>
+                <span class="label">PNR Number</span>
+                <span class="value">{{ pnr }}</span>
+            </td>
+            <td>
+                <span class="label">Train No. & Name</span>
+                <span class="value">{{ train_name }}</span>
+            </td>
+            <td>
+                <span class="label">Journey Date</span>
+                <span class="value">{{ date }}</span>
+            </td>
+            <td>
+                <span class="label">Class</span>
+                <span class="value">THIRD AC (3A)</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="label">From Station</span>
+                <span class="value">{{ from_stn }}</span>
+            </td>
+            <td>
+                <span class="label">Boarding At</span>
+                <span class="value">{{ from_stn }}</span>
+            </td>
+            <td>
+                <span class="label">To Station</span>
+                <span class="value">{{ to_stn }}</span>
+            </td>
+            <td>
+                <span class="label">Quota</span>
+                <span class="value">GENERAL (GN)</span>
+            </td>
+        </tr>
+    </table>
+
+    <div style="font-weight: bold; margin-bottom: 5px; color: #0b2f61; font-size: 11px;">PASSENGER DETAILS</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 10%;">S.No.</th>
+                <th style="width: 40%;">Name</th>
+                <th style="width: 15%;">Age</th>
+                <th style="width: 15%;">Gender</th>
+                <th style="th: 20%;">Current Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1.</td>
+                <td style="text-transform: uppercase;">{{ name }}</td>
+                <td>26</td>
+                <td>M</td>
+                <td>CNF (CONFIRM)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="font-weight: bold; margin-bottom: 5px; color: #0b2f61; font-size: 11px;">PAYMENT DETAILS</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 80%;">Description</th>
+                <th style="width: 20%; text-align: right;">Amount (Rs.)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ticket Fare (inclusive of GST)</td>
+                <td style="text-align: right;">1,920.00</td>
+            </tr>
+            <tr>
+                <td>IRCTC Convenience Fee</td>
+                <td style="text-align: right;">23.60</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #eaeaea;">
+                <td>Total Amount Paid</td>
+                <td style="text-align: right;">1,943.60</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer-banner">
+        IR recovers only 57% of cost of travel on an average.
+    </div>
+
+    <div class="disclaimer">
+        <strong>Important Instructions:</strong><br>
+        1. Please carry original Identity Proof (Aadhaar Card, Driving License, Voter ID, etc.) along with this Electronic Reservation Slip (ERS).<br>
+        2. E-ticket passenger is not required to carry physical copy of ERS, showing ticket on SMS/Laptop/Mobile is valid.<br>
+        3. For any customer care support, contact 14646 or 080-44647999.
+    </div>
+
+</body>
+</html>
