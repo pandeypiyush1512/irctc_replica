@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RailSutra — Train bookings made simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="RailSutra home"><span class="brand-mark">R</span><span>RailSutra</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#book">Book tickets</a><a href="#services">Travel services</a><a href="#support">Help</a>
+      </nav>
+      <div class="header-actions"><button class="language" type="button">EN <span>⌄</span></button><button class="signin" type="button">Sign in</button></div>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="book">
+        <div class="hero-copy">
+          <p class="eyebrow">INDIA, ON TRACK</p>
+          <h1>Go where the<br /><em>good stories</em> start.</h1>
+          <p class="hero-text">A simpler way to plan rail journeys across the country — from your first search to your final platform.</p>
+          <div class="stat-row"><div><strong>24k+</strong><span>daily routes</span></div><div><strong>7,300</strong><span>stations</span></div><div><strong>4.8/5</strong><span>traveller rating</span></div></div>
+        </div>
+        <div class="scenery" aria-hidden="true"><div class="sun"></div><div class="hill hill-one"></div><div class="hill hill-two"></div><div class="rail"><i></i><i></i><i></i><i></i></div><div class="train"><span></span><span></span><span></span><span></span><span></span></div></div>
+      </section>
+
+      <section class="booking-wrap" aria-label="Train search">
+        <div class="booking-tabs"><button class="active" type="button">Train tickets</button><button type="button">PNR status</button><button type="button">Charts &amp; vacancy</button></div>
+        <form id="train-form" class="booking-card">
+          <div class="journey-fields">
+            <label class="field station-field"><span class="field-label">From</span><input id="from" name="from" type="text" placeholder="Departure station" autocomplete="off" required /><small>e.g. New Delhi (NDLS)</small></label>
+            <button class="swap" id="swap" type="button" aria-label="Swap departure and arrival">⇄</button>
+            <label class="field station-field"><span class="field-label">To</span><input id="to" name="to" type="text" placeholder="Arrival station" autocomplete="off" required /><small>e.g. Mumbai Central (MMCT)</small></label>
+            <label class="field"><span class="field-label">Journey date</span><input id="date" name="date" type="date" required /></label>
+            <label class="field"><span class="field-label">Travel class</span><select id="travel-class" name="travel-class"><option>All Classes</option><option>1A — First AC</option><option>2A — AC 2 Tier</option><option>3A — AC 3 Tier</option><option>SL — Sleeper</option><option>2S — Second Sitting</option></select></label>
+            <label class="field"><span class="field-label">Quota</span><select id="quota" name="quota"><option>GENERAL</option><option>LADIES</option><option>TATKAL</option><option>PREMIUM TATKAL</option><option>PERSON WITH DISABILITY</option></select></label>
+          </div>
+          <div class="booking-footer">
+            <div class="checks"><label><input type="checkbox" name="disability" /> <span>Person with disability concession</span></label><label><input type="checkbox" name="flexible" /> <span>Flexible with date</span></label><label><input type="checkbox" name="pass" /> <span>Railway pass concession</span></label></div>
+            <button class="search-button" type="submit">Search trains <span>→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="quick-links" id="services"><a href="#book"><span class="quick-icon">⌖</span><span><b>Check PNR status</b><small>Know your booking status</small></span><strong>→</strong></a><a href="#book"><span class="quick-icon">▤</span><span><b>Chart &amp; vacancy</b><small>Find a seat at the last minute</small></span><strong>→</strong></a><a href="#book"><span class="quick-icon">⌘</span><span><b>Manage booking</b><small>Cancel or change your journey</small></span><strong>→</strong></a></section>
+
+      <section class="discover"><div><p class="eyebrow">MORE THAN A JOURNEY</p><h2>Every platform opens<br />a new possibility.</h2></div><p class="discover-text">Put your whole trip in one place. Discover stays, local rides, meal options and experiences around your rail journey.</p></section>
+    </main>
+    <footer id="support"><span class="brand"><span class="brand-mark">R</span><span>RailSutra</span></span><p>Demo interface — not affiliated with Indian Railways or IRCTC.</p><a href="mailto:help@railsutra.example">Need help? Get in touch →</a></footer>
+
+    <dialog id="results-dialog"><button class="close-dialog" aria-label="Close results">×</button><div id="results"></div></dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
